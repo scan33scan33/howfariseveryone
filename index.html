@@ -28,25 +28,16 @@ var generateDistanceMatrix = function () {
   var callback = function(response, status) {
     var data = new google.visualization.DataTable();
     // response
-  data.addColumn('string', 'Name');
-  data.addColumn('number', 'Salary');
-  data.addColumn('boolean', 'Full Time');
-  data.addRows(5);
-  data.setCell(0, 0, 'John');
-  data.setCell(0, 1, 10000, '$10,000');
-  data.setCell(0, 2, true);
-  data.setCell(1, 0, 'Mary');
-  data.setCell(1, 1, 25000, '$25,000');
-  data.setCell(1, 2, true);
-  data.setCell(2, 0, 'Steve');
-  data.setCell(2, 1, 8000, '$8,000');
-  data.setCell(2, 2, false);
-  data.setCell(3, 0, 'Ellen');
-  data.setCell(3, 1, 20000, '$20,000');
-  data.setCell(3, 2, true);
-  data.setCell(4, 0, 'Mike');
-  data.setCell(4, 1, 12000, '$12,000');
-  data.setCell(4, 2, false);
+    data.addColumn('string', 'Destinations');
+    for (var i = 0; i < response["origin_addresses"].length; ++i) {
+      data.addColumn('string', response["origin_addresses"][i]);
+    }
+    data.addRows(response["destination_addresses"].length);
+    for (var i = 0; i < response["rows"].length; ++i) {
+      for (var j = 0; j < response["rows"][i]["elements"].length; ++j) {
+        data.setCell(j, i, response["rows"][i]["elements"][j]["duration"]["text"];
+      }
+    }
     drawTable(data);
   }
   var service = new google.maps.DistanceMatrixService();
@@ -79,7 +70,7 @@ var addMoreDestsButton = function() {
 <h3>Origins</h3>
 <div class="input_box">
   <input type="text" value="National Taiwan University">
-  <input type="text" value="Google Taiwan">
+  <input type="text" value="Google Taipei">
   <button id="add_more_origins_button" onclick="addMoreOriginsButton();">More...</button>
 </div>
 </div>
@@ -88,7 +79,7 @@ var addMoreDestsButton = function() {
 <h3>Destinations</h3>
 <div class="input_box">
   <input type="text" value="National Taiwan University">
-  <input type="text" value="Google Taiwan">
+  <input type="text" value="Google Taipei">
   <input type="text" value="Daan Forest Park">
   <button id="add_more_dests_button" onclick="addMoreDestsButton();">More...</button>
 </div>
