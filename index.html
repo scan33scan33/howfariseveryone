@@ -34,8 +34,28 @@ var generateDistanceMatrix = function () {
   }, callback);
 }
 
+var addMoreButton = function () {
+  $(this).prev().clone();
+}
+
 </script>
 
-<button onclick="generateDistanceMatrix();"></button>
+<div class="origins">
+<h3>Origins</h3>
+<div class="input_box">
+  <input type="text">
+  <button onclick="addMoreButton">More</button>
+</div>
+</div>
+
+<div class="dests">
+<h3>Destinations</h3>
+<div class="input_box">
+  <input type="text">
+  <button onclick="addMoreButton();">More</button>
+</div>
+</div>
+
+<button onclick="generateDistanceMatrix();">Compute</button>
 
 
