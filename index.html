@@ -17,12 +17,16 @@ var generateDistanceMatrix = function () {
   var origins = [];
   var inputs = $('.origins').find('input');
   for (var i = 0; i < inputs.length; ++i) {
-    origins.push(inputs[i].value);
+    if (inputs[i].value) {
+      origins.push(inputs[i].value);
+    }
   }
   var dests = [];
   var inputs = $('.dests').find('input');
   for (var i = 0; i < inputs.length; ++i) {
-    dests.push(inputs[i].value);
+    if (inputs[i].value) {
+      dests.push(inputs[i].value);
+    }
   }
   
   var callback = function(response, status) {
