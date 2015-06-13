@@ -30,12 +30,15 @@ var generateDistanceMatrix = function () {
     // response
     data.addColumn('string', 'Destinations');
     for (var i = 0; i < response['originAddresses'].length; ++i) {
-      data.addColumn('string', response['origin_addresses'][i]);
+      data.addColumn('string', response['originAddresses'][i]);
     }
     data.addRows(response['destinationAddresses'].length);
+    for (var i = 0; i < response['destinationAddresses'].length; ++i) {
+      data.setCell(i, 0, response['destinationAddresses'][i]);
+    }
     for (var i = 0; i < response['rows'].length; ++i) {
       for (var j = 0; j < response['rows'][i]['elements'].length; ++j) {
-        data.setCell(j, i, response['rows'][i]['elements'][j]['duration']['text']);
+        data.setCell(j, i + 1, response['rows'][i]['elements'][j]['duration']['text']);
       }
     }
     drawTable(data);
