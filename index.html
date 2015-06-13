@@ -3,35 +3,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
 
-var map;
-var geocoder;
-var bounds = new google.maps.LatLngBounds();
-var markersArray = [];
-
-var origin1 = new google.maps.LatLng(55.930, -3.118);
-var origin2 = 'Greenwich, England';
-var destinationA = 'Stockholm, Sweden';
-var destinationB = new google.maps.LatLng(50.087, 14.421);
-
 var generateDistanceMatrix = function () {
   var origins = [];
   var inputs = $('.origins').find('input');
   for (var i = 0; i < inputs.length; ++i) {
     origins.push(inputs[i].value);
   }
-  var origin1 = new google.maps.LatLng(55.930385, -3.118425);
-  var origin2 = "Greenwich, England";
-  var destinationA = "Stockholm, Sweden";
-  var destinationB = new google.maps.LatLng(50.087692, 14.421150);
+  var dests = [];
+  var inputs = $('.dests').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    dests.push(inputs[i].value);
+  }
   
   var callback = function(response, status) {
-    $('.result').html(response);
+    $('.result').html(JSON.stringify(response));
   }
   var service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(
   {
-    origins: [origin1, origin2],
-    destinations: [destinationA, destinationB],
+    origins: origins,
+    destinations: dests,
     travelMode: google.maps.TravelMode.DRIVING,
     unitSystem: google.maps.UnitSystem.METRIC,
     avoidHighways: false,
