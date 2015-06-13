@@ -14,13 +14,17 @@ var destinationA = 'Stockholm, Sweden';
 var destinationB = new google.maps.LatLng(50.087, 14.421);
 
 var generateDistanceMatrix = function () {
+  var origins = [];
+  for (var input in $('.origins').find('input')) {
+    origins.push(input.value);
+  }
   var origin1 = new google.maps.LatLng(55.930385, -3.118425);
   var origin2 = "Greenwich, England";
   var destinationA = "Stockholm, Sweden";
   var destinationB = new google.maps.LatLng(50.087692, 14.421150);
   
   var callback = function(response, status) {
-    console.log(response);
+    $('.result').html(response);
   }
   var service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(
@@ -35,7 +39,7 @@ var generateDistanceMatrix = function () {
 }
 
 var addMoreButton = function (button) {
-  button.prev().clone();
+  button.before(button.prev().clone());
 }
 
 var addMoreOriginsButton = function() {
@@ -63,7 +67,9 @@ var addMoreDestsButton = function() {
   <button id="add_more_dests_button" onclick="addMoreDestsButton();">More</button>
 </div>
 </div>
-
+<div>
 <button onclick="generateDistanceMatrix();">Compute</button>
-
+</div>
+<div class="result">
+</div>
 
