@@ -34,8 +34,16 @@ var generateDistanceMatrix = function () {
   }, callback);
 }
 
-var addMoreButton = function () {
-  $(this).prev().clone();
+var addMoreButton = function (button) {
+  button.prev().clone();
+}
+
+var addMoreOriginsButton = function() {
+  addMoreButton($('#add_more_origins_button'));
+}
+
+var addMoreDestsButton = function() {
+  addMoreButton($('#add_more_dests_button'));
 }
 
 </script>
@@ -44,7 +52,7 @@ var addMoreButton = function () {
 <h3>Origins</h3>
 <div class="input_box">
   <input type="text">
-  <button onclick="addMoreButton">More</button>
+  <button id="add_more_origins_button" onclick="addMoreOriginsButton();">More</button>
 </div>
 </div>
 
@@ -52,7 +60,7 @@ var addMoreButton = function () {
 <h3>Destinations</h3>
 <div class="input_box">
   <input type="text">
-  <button onclick="addMoreButton();">More</button>
+  <button id="add_more_dests_button" onclick="addMoreDestsButton();">More</button>
 </div>
 </div>
 
