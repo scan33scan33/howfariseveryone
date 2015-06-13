@@ -29,13 +29,13 @@ var generateDistanceMatrix = function () {
     var data = new google.visualization.DataTable();
     // response
     data.addColumn('string', 'Destinations');
-    for (var i = 0; i < response["origin_addresses"].length; ++i) {
-      data.addColumn('string', response["origin_addresses"][i]);
+    for (var i = 0; i < response['origin_addresses'].length; ++i) {
+      data.addColumn('string', response['origin_addresses'][i]);
     }
-    data.addRows(response["destination_addresses"].length);
-    for (var i = 0; i < response["rows"].length; ++i) {
-      for (var j = 0; j < response["rows"][i]["elements"].length; ++j) {
-        data.setCell(j, i, response["rows"][i]["elements"][j]["duration"]["text"];
+    data.addRows(response['destination_addresses'].length);
+    for (var i = 0; i < response['rows'].length; ++i) {
+      for (var j = 0; j < response['rows'][i]['elements'].length; ++j) {
+        data.setCell(j, i, response['rows'][i]['elements'][j]['duration']['text']);
       }
     }
     drawTable(data);
