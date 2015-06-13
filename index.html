@@ -47,6 +47,7 @@ var generateDistanceMatrix = function () {
   data.setCell(4, 0, 'Mike');
   data.setCell(4, 1, 12000, '$12,000');
   data.setCell(4, 2, false);
+    drawTable(data);
   }
   var service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(
