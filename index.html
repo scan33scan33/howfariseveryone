@@ -25,11 +25,9 @@ var generateDistanceMatrix = function () {
     origins: [origin1, origin2],
     destinations: [destinationA, destinationB],
     travelMode: google.maps.TravelMode.DRIVING,
-    transitOptions: TransitOptions,
-    unitSystem: UnitSystem,
-    durationInTraffic: Boolean,
-    avoidHighways: Boolean,
-    avoidTolls: Boolean,
+    unitSystem: google.maps.UnitSystem.METRIC,
+    avoidHighways: false,
+    avoidTolls: true,
   }, callback);
 
   var callback = function(response, status) {
