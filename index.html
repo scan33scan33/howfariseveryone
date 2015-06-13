@@ -10,7 +10,7 @@ google.load('visualization', '1.0', {'packages':['table', 'map', 'corechart']});
 
 var drawTable = function (data) {
   var table = new google.visualization.Table(document.getElementById('result'));
-  table.draw(data, {showRowNumber: true});
+  table.draw(data, {showRowNumber: false});
 }
 
 var generateDistanceMatrix = function () {
