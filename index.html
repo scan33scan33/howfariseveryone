@@ -15,8 +15,9 @@ var destinationB = new google.maps.LatLng(50.087, 14.421);
 
 var generateDistanceMatrix = function () {
   var origins = [];
-  for (var input in $('.origins').find('input')) {
-    origins.push(input.value);
+  var inputs = $('.origins').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    origins.push(inputs[i].value);
   }
   var origin1 = new google.maps.LatLng(55.930385, -3.118425);
   var origin2 = "Greenwich, England";
