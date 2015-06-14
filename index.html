@@ -32,7 +32,7 @@ var generateDistanceMatrix = function () {
   var callback = function(response, status) {
     var data = new google.visualization.DataTable();
     // response
-    data.addColumn('string', 'Destinations');
+    data.addColumn('string', 'Destinations / Origins');
     for (var i = 0; i < response['originAddresses'].length; ++i) {
       data.addColumn('string', response['originAddresses'][i]);
     }
@@ -102,7 +102,7 @@ var addMoreDestsButton = function() {
 <div>
 <button onclick="generateDistanceMatrix();">Compute Distance Matrix</button>
 </div>
-<br>
+<h3>Travel Time Matrix</h3>
 <div id="result">
 </div>
 <br>
