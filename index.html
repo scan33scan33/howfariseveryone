@@ -41,8 +41,15 @@ var generateDistanceMatrix = function () {
       data.setCell(i, 0, response['destinationAddresses'][i]);
     }
     for (var i = 0; i < response['rows'].length; ++i) {
+      if (!response['rows'] || !response['rows'][i] || !response['rows'][i]['elements']) {
+        continue;
+      }
       for (var j = 0; j < response['rows'][i]['elements'].length; ++j) {
-        data.setCell(j, i + 1, response['rows'][i]['elements'][j]['duration']['text']);
+        if (!response['rows'][i]['elements'][j]['duration']['text']) {
+          data.setCell(j, i + 1, 'error');
+        } else {
+          data.setCell(j, i + 1, response['rows'][i]['elements'][j]['duration']['text']);
+        }
       }
     }
     drawTable(data);
