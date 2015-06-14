@@ -45,7 +45,7 @@ var generateDistanceMatrix = function () {
         continue;
       }
       for (var j = 0; j < response['rows'][i]['elements'].length; ++j) {
-        if (!response['rows'][i]['elements'][j]['duration']['text']) {
+        if (!response['rows'][i]['elements'][j] || !response['rows'][i]['elements'][j]['duration'] || !response['rows'][i]['elements'][j]['duration']['text']) {
           data.setCell(j, i + 1, 'error');
         } else {
           data.setCell(j, i + 1, response['rows'][i]['elements'][j]['duration']['text']);
