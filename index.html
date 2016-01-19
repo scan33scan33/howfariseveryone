@@ -67,9 +67,8 @@ var generateDistanceMatrix = function () {
 }
 
 var addMoreButton = function (button) {
-  var new_input = button.prev().clone()
-  button.before(button.prev().clone());
-  var autocomplete = new google.maps.places.Autocomplete(new_input);
+  button.prev().clone().prependTo(button);
+  var autocomplete = new google.maps.places.Autocomplete(button.prev());
 }
 
 var addMoreOriginsButton = function() {
