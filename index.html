@@ -69,7 +69,7 @@ var generateDistanceMatrix = function () {
 var addMoreButton = function (button) {
   var new_input = button.prev().clone();
   button.before(new_input);
-  var autocomplete = new google.maps.places.Autocomplete(new_input[0]);
+  var autocomplete = new google.maps.places.Autocomplete(new_input('location_input'));
 }
 
 var addMoreOriginsButton = function() {
@@ -86,19 +86,23 @@ This program gives you the travel time from each origin to each destination for 
 <div class="origins">
 <h3>Origins</h3>
 <div class="input_box">
-  <input class="location_input" type="text" value="National Taiwan University">
-  <input class="location_input" type="text" value="Taipei 101">
-  <button id="add_more_origins_button" onclick="addMoreOriginsButton();">More...</button>
+  <ul>
+    <li><input class="location_input" type="text" value="National Taiwan University"></li>
+    <li><input class="location_input" type="text" value="Taipei 101"></li>
+    <li><button id="add_more_origins_button" onclick="addMoreOriginsButton();">More...</button></li>
+  <ul>
 </div>
 </div>
 
 <div class="dests">
 <h3>Destinations</h3>
 <div class="input_box">
-  <input class="location_input" type="text" value="National Taiwan University">
-  <input class="location_input" type="text" value="Taipei 101">
-  <input class="location_input" type="text" value="Daan Forest Park">
-  <button id="add_more_dests_button" onclick="addMoreDestsButton();">More...</button>
+  <ul>
+    <li><input class="location_input" type="text" value="National Taiwan University"></li>
+    <li><input class="location_input" type="text" value="Taipei 101"></li>
+    <li><input class="location_input" type="text" value="Daan Forest Park"></li>
+    <li><button id="add_more_dests_button" onclick="addMoreDestsButton();">More...</button></li>
+  </ul>
 </div>
 </div>
 <br>
