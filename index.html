@@ -113,8 +113,8 @@ This program gives you the travel time from each origin to each destination for 
 <script>
 // Enable autocompletion for all inputs.
 $(document).ready(function() {
-    $('.location_input').each(function(input) {
-      var autocomplete = new google.maps.places.Autocomplete(input);
+    $('.location_input').each(function(index) {
+      var autocomplete = new google.maps.places.Autocomplete(this[index]);
     }
   );
 });
