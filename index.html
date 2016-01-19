@@ -131,21 +131,6 @@ function fromGetUrl() {
   var dests = getParameterByName('dests').split(';');
 }
 
-// Updates the map based on the input boxes.
-function updateMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 9,
-  });
-  var inputs = $('.origins').find('input');
-  for (var i = 0; i < inputs.length; ++i) {
-    addMarker(inputs[i].value, map);
-  }
-  var inputs = $('.dests').find('input');
-  for (var i = 0; i < inputs.length; ++i) {
-    addMarker(inputs[i].value, map);
-  }
-}
-
 function updateShareUrl() {
   var inputs = $('.origins').find('input');
   var share_url_text = window.location;
@@ -160,6 +145,24 @@ function updateShareUrl() {
   }
   $('#share_url').val(share_url_text);
 }
+
+
+// Updates the map based on the input boxes.
+function updateMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 9,
+  });
+  var inputs = $('.origins').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    addMarker(inputs[i].value, map);
+  }
+  var inputs = $('.dests').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    addMarker(inputs[i].value, map);
+  }
+  updateShareUrl();
+}
+
 
 </script>
 This program gives you the travel time from each origin to each destination for you to get a fairer and more objective measures for multi-person multi-destination route planning.
