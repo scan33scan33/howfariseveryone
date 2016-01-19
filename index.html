@@ -113,6 +113,24 @@ function addMarker(address, resultsMap) {
   });
 }
 
+// Copied from: http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript?page=1&tab=votes#tab-top
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+// Parses input from GET arguments.
+function fromGetUrl() {
+  var origins = getParameterByName('origins').split(';');
+  var inputs = $('.origins').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    inputs[i].attr('value', origins[i]);
+  }
+  var dests = getParameterByName('dests').split(';');
+}
+
 // Updates the map based on the input boxes.
 function updateMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -181,10 +199,10 @@ This program gives you the travel time from each origin to each destination for 
 <script>
 // Enable autocompletion for all inputs.
 $(document).ready(function() {
-    $('.location_input').each(function(index) {
-      var autocomplete = new google.maps.places.Autocomplete(this);
-    }
-  );
+  fromGetUrl();
+  $('.location_input').each(function(index) {
+    var autocomplete = new google.maps.places.Autocomplete(this);
+  });
   updateMap();
   generateDistanceMatrix();
   updateShareUrl();
