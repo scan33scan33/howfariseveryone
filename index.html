@@ -96,20 +96,36 @@ var addMoreDestsButton = function() {
   addMoreButton($('#add_more_dests_button'));
 }
 
+function addMarker(address, resultsMap) {
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+      if (!resultsMap.getCenter()) {
+        resultMap.setCenter(results[0].geometry.location);
+      }
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
 // Updates the map based on the input boxes.
 function updateMap() {
-  var myLatLng = {lat: -25.363, lng: 131.044};
-
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
+    zoom: 8,
   });
-
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
+  var inputs = $('.origins').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    addMarker(inputs[i].value, map);
+  }
+  var inputs = $('.dests').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    addMarker(inputs[i].value, map);
+  }
 }
 
 </script>
@@ -119,7 +135,7 @@ This program gives you the travel time from each origin to each destination for 
 <div class="origins">
 <h3>Origins</h3>
 <div class="input_box">
-  <input class="location_input" type="text" value="Lawrence Hall of Science, Centennial Drive, Berkeley, CA, United States">
+  <input class="location_input" type="text" value="Lawrence Hall of Science, Centennial Drive, Berkeley, CA, United States" oninput="updateMap();">
   <input class="location_input" type="text" value="millbrae bart">
   <button id="add_more_origins_button" onclick="addMoreOriginsButton();">More...</button>
 </div>
