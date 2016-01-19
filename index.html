@@ -126,7 +126,7 @@ function fromGetUrl() {
   var origins = getParameterByName('origins').split(';');
   var inputs = $('.origins').find('input');
   for (var i = 0; i < inputs.length; ++i) {
-    inputs[i].attr('value', origins[i]);
+    inputs[i].value = origins[i];
   }
   var dests = getParameterByName('dests').split(';');
 }
