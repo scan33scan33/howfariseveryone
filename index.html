@@ -105,7 +105,7 @@ function addMarker(address, resultsMap) {
         position: results[0].geometry.location
       });
       if (!resultsMap.getCenter()) {
-        resultMap.setCenter(results[0].geometry.location);
+        resultsMap.setCenter(results[0].geometry.location);
       }
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
