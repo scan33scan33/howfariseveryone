@@ -128,6 +128,21 @@ function updateMap() {
   }
 }
 
+function updateShareUrl() {
+  var inputs = $('.origins').find('input');
+  var share_url_text = window.location;
+  share_url_text += '?origins=';
+  for (var i = 0; i < inputs.length; ++i) {
+    share_url_text += inputs[i].value + ';';
+  }
+  share_url_text += '?dests=';
+  var inputs = $('.dests').find('input');
+  for (var i = 0; i < inputs.length; ++i) {
+    share_url_text += inputs[i].value + ';';
+  }
+  $('#share_url').val(share_url_text);
+}
+
 </script>
 This program gives you the travel time from each origin to each destination for you to get a fairer and more objective measures for multi-person multi-destination route planning.
 
@@ -172,8 +187,10 @@ $(document).ready(function() {
   );
   updateMap();
   generateDistanceMatrix();
+  updateShareUrl();
 });
 </script>
+<label>Share URL</label><text id="share_url"></text>
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
