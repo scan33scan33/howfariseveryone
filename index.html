@@ -80,6 +80,13 @@ var addMoreDestsButton = function() {
   addMoreButton($('#add_more_dests_button'));
 }
 
+// Enable autocompletion for all inputs.
+$(document).ready(function() {
+    $('location_input').forEach(function(input) {
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    };
+  )
+});
 </script>
 This program gives you the travel time from each origin to each destination for you to get a fairer and more objective measures for multi-person multi-destination route planning.
 
@@ -87,8 +94,8 @@ This program gives you the travel time from each origin to each destination for 
 <div class="origins">
 <h3>Origins</h3>
 <div class="input_box">
-  <input type="text" value="National Taiwan University">
-  <input type="text" value="Taipei 101">
+  <input class="location_input" type="text" value="National Taiwan University">
+  <input class="location_input" type="text" value="Taipei 101">
   <button id="add_more_origins_button" onclick="addMoreOriginsButton();">More...</button>
 </div>
 </div>
@@ -96,9 +103,9 @@ This program gives you the travel time from each origin to each destination for 
 <div class="dests">
 <h3>Destinations</h3>
 <div class="input_box">
-  <input type="text" value="National Taiwan University">
-  <input type="text" value="Taipei 101">
-  <input type="text" value="Daan Forest Park">
+  <input class="location_input" type="text" value="National Taiwan University">
+  <input class="location_input" type="text" value="Taipei 101">
+  <input class="location_input" type="text" value="Daan Forest Park">
   <button id="add_more_dests_button" onclick="addMoreDestsButton();">More...</button>
 </div>
 </div>
