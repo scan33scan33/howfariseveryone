@@ -79,14 +79,6 @@ var addMoreOriginsButton = function() {
 var addMoreDestsButton = function() {
   addMoreButton($('#add_more_dests_button'));
 }
-
-// Enable autocompletion for all inputs.
-$(document).load(function() {
-    $('.location_input').each(function(input) {
-      var autocomplete = new google.maps.places.Autocomplete(input);
-    }
-  );
-});
 </script>
 This program gives you the travel time from each origin to each destination for you to get a fairer and more objective measures for multi-person multi-destination route planning.
 
@@ -117,5 +109,16 @@ This program gives you the travel time from each origin to each destination for 
 <div id="result">
 </div>
 <br>
+
+<script>
+// Enable autocompletion for all inputs.
+$(document).ready(function() {
+    $('.location_input').each(function(input) {
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+  );
+});
+</script>
+
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
