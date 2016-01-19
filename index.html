@@ -133,6 +133,7 @@ function fromGetUrl() {
 
 function updateShareUrl() {
   var inputs = $('.origins').find('input');
+  // TODO(minghen): this function seems to not work well. Maybe it is because that when onchange handler is called, the data is not updated yet.
   var share_url_text = window.location;
   share_url_text += '?origins=';
   for (var i = 0; i < inputs.length; ++i) {
