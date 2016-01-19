@@ -136,7 +136,7 @@ This program gives you the travel time from each origin to each destination for 
 <h3>Origins</h3>
 <div class="input_box">
   <input class="location_input" type="text" value="Lawrence Hall of Science, Centennial Drive, Berkeley, CA, United States" onchange="updateMap();">
-  <input class="location_input" type="text" value="millbrae bart">
+  <input class="location_input" type="text" value="millbrae bart" onchange="updateMap();">
   <button id="add_more_origins_button" onclick="addMoreOriginsButton();">More...</button>
 </div>
 </div>
@@ -144,9 +144,9 @@ This program gives you the travel time from each origin to each destination for 
 <div class="dests">
 <h3>Destinations</h3>
 <div class="input_box">
-  <input class="location_input" type="text" value="Lawrence Hall of Science, Centennial Drive, Berkeley, CA, United States">
-  <input class="location_input" type="text" value="millbrae bart">
-  <input class="location_input" type="text" value="california academy of sciences, san francisco">
+  <input class="location_input" type="text" value="Lawrence Hall of Science, Centennial Drive, Berkeley, CA, United States" onchange="updateMap();">
+  <input class="location_input" type="text" value="millbrae bart" onchange="updateMap();">
+  <input class="location_input" type="text" value="california academy of sciences, san francisco" onchange="updateMap();">
   <button id="add_more_dests_button" onclick="addMoreDestsButton();">More...</button>
 </div>
 </div>
@@ -154,10 +154,11 @@ This program gives you the travel time from each origin to each destination for 
 <h3>The Map</h3>
 <div id="map" width=600px>
 </div>
-<div>
-<button onclick="generateDistanceMatrix();">Compute Distance Matrix</button>
-</div>
+
 <h3>Travel Time Matrix</h3>
+<div>
+<button onclick="generateDistanceMatrix();">Recompute Travel Time Matrix</button>
+</div>
 <div id="result">
 </div>
 <br>
@@ -170,6 +171,7 @@ $(document).ready(function() {
     }
   );
   updateMap();
+  generateDistanceMatrix();
 });
 </script>
 
