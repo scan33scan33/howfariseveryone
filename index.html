@@ -1,3 +1,10 @@
+<style>
+ul {
+  list-style-type: none;
+}
+</style>
+
+
 <title>How Far is Everyone</title>
 <h1>How Far is Everyone?</h1>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDATA2ftiYVInpV2M7GtoKm0RbAYGJZriQ&libraries=places"></script>
@@ -69,7 +76,7 @@ var generateDistanceMatrix = function () {
 var addMoreButton = function (button) {
   var new_input = button.prev().clone();
   button.before(new_input);
-  var autocomplete = new google.maps.places.Autocomplete(new_input('location_input'));
+  var autocomplete = new google.maps.places.Autocomplete(new_input.find('.location_input'));
 }
 
 var addMoreOriginsButton = function() {
