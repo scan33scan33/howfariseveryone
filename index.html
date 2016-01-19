@@ -91,6 +91,23 @@ var addMoreOriginsButton = function() {
 var addMoreDestsButton = function() {
   addMoreButton($('#add_more_dests_button'));
 }
+
+// Updates the map based on the input boxes.
+function updateMap() {
+  var myLatLng = {lat: -25.363, lng: 131.044};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+}
+
 </script>
 This program gives you the travel time from each origin to each destination for you to get a fairer and more objective measures for multi-person multi-destination route planning.
 
@@ -114,6 +131,9 @@ This program gives you the travel time from each origin to each destination for 
 </div>
 </div>
 <br>
+<h3>The Map</h3>
+<div id="map">
+</div>
 <div>
 <button onclick="generateDistanceMatrix();">Compute Distance Matrix</button>
 </div>
