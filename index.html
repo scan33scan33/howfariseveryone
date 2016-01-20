@@ -124,25 +124,48 @@ function getParameterByName(name) {
 // Parses input from GET arguments.
 function fromGetUrl() {
   var origins = getParameterByName('origins').split(';');
+  var buttons_to_add = $('.origins').find('input').length - origins.length;
+  while (buttons_to_add > 0) {
+    addMoreOriginsButton();
+    buttons_to_add -= 1;
+  }
   var inputs = $('.origins').find('input');
   for (var i = 0; i < inputs.length; ++i) {
-    inputs[i].value = origins[i];
+    if (origins[i]) {
+      inputs[i].value = origins[i];
+    }
   }
   var dests = getParameterByName('dests').split(';');
+  var buttons_to_add = $('.dests').find('input').length - dest.length;
+  while (buttons_to_add > 0) {
+    addMoreDestsButton();
+    buttons_to_add -= 1;
+  }
+  var inputs = $('.dests').find('input');
+  for (var i = 0; i < dests.length; ++i) {
+    if (dests[i]) {
+      inputs[i].value = dests[i];
+    }
+  }
 }
 
 function updateShareUrl() {
   var inputs = $('.origins').find('input');
-  // TODO(minghen): this function seems to not work well. Maybe it is because that when onchange handler is called, the data is not updated yet.
   var share_url_text = location.protocol + '//' + location.host + location.pathname;
   share_url_text += '?origins=';
   for (var i = 0; i < inputs.length; ++i) {
-    share_url_text += inputs[i].value + ';';
+    share_url_text += inputs[i].value;
+    if (i != inputs.length - 1) {
+      share_url_text += ';';
+    }
   }
   share_url_text += '?dests=';
   var inputs = $('.dests').find('input');
   for (var i = 0; i < inputs.length; ++i) {
     share_url_text += inputs[i].value + ';';
+    if (i != inputs.length - 1) {
+      share_url_text += ';';
+    }
   }
   $('#share_url').val(share_url_text);
 }
@@ -161,7 +184,6 @@ function updateMap() {
   for (var i = 0; i < inputs.length; ++i) {
     addMarker(inputs[i].value, map);
   }
-  
 }
 
 // Update everything based on user input.
