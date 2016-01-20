@@ -136,7 +136,7 @@ function fromGetUrl() {
     }
   }
   var dests = getParameterByName('dests').split(';');
-  var buttons_to_add = $('.dests').find('input').length - dest.length;
+  var buttons_to_add = $('.dests').find('input').length - dests.length;
   while (buttons_to_add > 0) {
     addMoreDestsButton();
     buttons_to_add -= 1;
