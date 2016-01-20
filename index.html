@@ -124,7 +124,7 @@ function getParameterByName(name) {
 // Parses input from GET arguments.
 function fromGetUrl() {
   var origins = getParameterByName('origins').split(';');
-  var buttons_to_add = $('.origins').find('input').length - origins.length;
+  var buttons_to_add = origins.length - $('.origins').find('input').length;
   while (buttons_to_add > 0) {
     addMoreOriginsButton();
     buttons_to_add -= 1;
@@ -136,7 +136,7 @@ function fromGetUrl() {
     }
   }
   var dests = getParameterByName('dests').split(';');
-  var buttons_to_add = $('.dests').find('input').length - dests.length;
+  var buttons_to_add = dests.length - $('.dests').find('input').length;
   while (buttons_to_add > 0) {
     addMoreDestsButton();
     buttons_to_add -= 1;
