@@ -162,7 +162,7 @@ function updateShareUrl() {
   share_url_text += '&dests=';
   var inputs = $('.dests').find('input');
   for (var i = 0; i < inputs.length; ++i) {
-    share_url_text += inputs[i].value + ';';
+    share_url_text += inputs[i].value;
     if (i != inputs.length - 1) {
       share_url_text += ';';
     }
