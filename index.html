@@ -207,10 +207,12 @@ $(document).ready(function() {
   fromGetUrl();
   $('.location_input').each(function(index) {
     var autocomplete = new google.maps.places.Autocomplete(this);
+    autocomplete.addListener('place_changed', function() {
+      updateMap();
+    });
   });
   updateMap();
   generateDistanceMatrix();
-  updateShareUrl();
 });
 </script>
 <label>Share URL</label><input id="share_url" disabled></input> <br>
